@@ -6,7 +6,7 @@ const activitySchema= new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Trip'
     },
-    name:{
+    activityName:{
         type: String,
         required: true
     },
@@ -14,10 +14,10 @@ const activitySchema= new Schema({
         type: Date,
         required: true
     },
-    startPoint:{
+    description:{
         type: String,
     },
-    endPoint:{
+    destination:{
         type: String,
     },
 },

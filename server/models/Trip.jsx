@@ -7,7 +7,7 @@ const tripSchema= new Schema({
         ref: 'User',
         required: true,
     },
-    name:{
+    tripName:{
         type: String,
         required: true,
     },
