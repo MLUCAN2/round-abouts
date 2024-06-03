@@ -22,6 +22,12 @@ const tripSchema= new Schema({
     description:{
         type: String,
     },
+    activities: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Activity',
+        },
+    ],
 },
 {
     timestamps: true,
