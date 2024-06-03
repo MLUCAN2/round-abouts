@@ -20,11 +20,12 @@ const userSchema= new Schema({
         type: String,
         required: true
     },
-    trips: [{
+    trips:[
+        {
         type: Schema.Types.ObjectId,
-        ref: 'Trip'
-      },
-    ],
+        ref: 'Trip',
+    },
+],
 },
 {
     timestamps: true,
