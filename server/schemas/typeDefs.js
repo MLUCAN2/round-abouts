@@ -5,18 +5,47 @@ const typeDefs = `
     lastName: String
     email: String
     password: String
+    trips: [Trip]
+  }
+  
+  type Trip {
+    _id: ID
+    tripName: String
+    startDate: Data
+    endDate: Data
+    description: String
+    activities: [Activity]
+  }
+
+  type Activity {
+    _id: ID
+    activityName: String
+    date: Data
+    description: String
+    destination: String
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
     users: [User]!
     user(userId: ID!): User
+    trips: [Trip]
+    trip(tripId: ID!): Trip
+    activities: [Activity]
   }
 
   type Mutation {
-    addUser(name: String!): User
-    addSkill(userId: ID!, skill: String!): User
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
-    removeSkill(userId: ID!, skill: String!): User
+    addTrip(tripName: String!, startDate: Data!, endDate: Data!, Description: String!): Trip
+    removeTrip(tripId: ID!): Trip
+    addActivity(activityName: String!, date: Data!, description: String!, destination: String!): Activity
+    removeActivity(activityId: ID!): Activity
   }
 `;
 
