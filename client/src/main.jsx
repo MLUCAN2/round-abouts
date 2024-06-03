@@ -14,14 +14,14 @@ import Trips from './pages/Trips.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App/>,
+    element: <App/>, 
     children: [
       {
         index: true,
         element: <Home/>
       },
       {
-        path: ' /activities',
+        path: '/activities',
         element: <Activities/>
       },
       {
@@ -47,6 +47,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+     <RouterProvider router={router} />
   </React.StrictMode>,
 )
