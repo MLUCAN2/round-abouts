@@ -11,8 +11,8 @@ const typeDefs = `
   type Trip {
     _id: ID
     tripName: String
-    startDate: Data
-    endDate: Data
+    startDate: String
+    endDate: String
     description: String
     activities: [Activity]
   }
@@ -20,7 +20,7 @@ const typeDefs = `
   type Activity {
     _id: ID
     activityName: String
-    date: Data
+    date: String
     description: String
     destination: String
   }
@@ -42,9 +42,9 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
-    addTrip(tripName: String!, startDate: Data!, endDate: Data!, Description: String!): Trip
+    addTrip(tripName: String!, startDate: String!, endDate: String!, Description: String!): Trip
     removeTrip(tripId: ID!): Trip
-    addActivity(activityName: String!, date: Data!, description: String!, destination: String!): Activity
+    addActivity(activityName: String!, date: String!, description: String!, destination: String!): Activity
     removeActivity(activityId: ID!): Activity
   }
 `;
