@@ -1,35 +1,35 @@
 [
     {
       "userEmail": "linda.e@example.com",
-      "name": "Trip to Paris",
+      "tripName": "Trip to Paris",
       "startDate": "2023-06-01",
       "endDate": "2023-06-10",
       "description": "A wonderful trip to Paris."
     },
     {
       "userEmail": "t.hard@example.com",
-      "name": "Trip to London",
+      "tripName": "Trip to London",
       "startDate": "2023-07-01",
       "endDate": "2023-07-10",
       "description": "A wonderful trip to London."
     },
     {
       "userEmail": "b.mac@example.com",
-      "name": "Trip to Tokyo",
+      "tripName": "Trip to Tokyo",
       "startDate": "2023-08-01",
       "endDate": "2023-08-10",
       "description": "An amazing trip to Tokyo."
     },
     {
       "userEmail": "anewell@example.com",
-      "name": "Trip to New York",
+      "tripName": "Trip to New York",
       "startDate": "2023-09-01",
       "endDate": "2023-09-10",
       "description": "A fantastic trip to New York."
     },
     {
       "userEmail": "charlie.brown@example.com",
-      "name": "Trip to Sydney",
+      "tripName": "Trip to Sydney",
       "startDate": "2023-10-01",
       "endDate": "2023-10-10",
       "description": "A lovely trip to Sydney."
