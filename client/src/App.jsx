@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import './App.css';
 import {
   ApolloClient,
@@ -36,13 +35,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const App= () => {
-  const [currentPage, setCurrentPage]= useState('Home');
-
+function App() {
   return (
     <ApolloProvider client={client}>
-      <div>
-        <Header setCurrentPage={setCurrentPage}/>
+      <div className="flex-column justify-flex-start min-100-vh">
+        <Header />
         <div className="container">
           <Outlet />
         </div>

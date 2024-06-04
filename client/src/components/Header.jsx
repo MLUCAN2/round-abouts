@@ -1,16 +1,17 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 // This will house our header and navigation for the site
-const Header= ({setCurrentPage})=>{
+const Header= ()=>{
     return(
         <header>
             <h1>Round Abouts</h1>
             <nav>
                 <ul className="nav-links">
-                    <li><button onClick={() => setCurrentPage('Home')}>Home |</button></li>
-                    <li><button onClick={() => setCurrentPage('Login')}>Login |</button></li>
-                    <li><button onClick={() => setCurrentPage('Register')}>Register |</button></li>
-                    <li><button onClick={() => setCurrentPage('Trips')}>Trips</button></li>
+                    <li><Link to= "/">Home</Link></li>
+                    <li><Link to= "/login">Login</Link></li>
+                    <li><Link to= "/register">Register</Link></li>
+                    <li><Link to= "/trips">Trips</Link></li>
                 </ul>
             </nav>
         </header>
