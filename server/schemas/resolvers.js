@@ -16,7 +16,7 @@ const resolvers = {
     },
 
     trip: async (parent, {tripId}) => {
-      return Trip.findone({ _id: tripId }).populate("activities")
+      return Trip.findOne({ _id: tripId }).populate("activities")
     },
 
     activities: async () => {

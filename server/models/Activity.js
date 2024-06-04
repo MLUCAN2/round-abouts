@@ -11,7 +11,7 @@ const activitySchema= new Schema({
         required: true
     },
     date:{
-        type: Date,
+        type: String,
         required: true
     },
     description:{
