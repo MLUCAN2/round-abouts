@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ADD_TRIP } from '../../Utils/mutations';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import Auth from '../../Utils/auth';
 
 export default CreateTripForm = () => {
     const [tripNameText, setTripNameText] = useState('');
@@ -60,9 +61,7 @@ export default CreateTripForm = () => {
             case 'descriptionText':
                 setDescriptionText(value);
                 break;
-            default:
-                // Handle any other case if necessary
-                break;
+            
         }
     }
 
@@ -72,6 +71,10 @@ export default CreateTripForm = () => {
 
             {Auth.loggedIn() ? (
                 <>
+                <form
+                    className= "form"
+                    onSubmit={handleFormSubmit}
+                ></form>
 
                 </>
             )
