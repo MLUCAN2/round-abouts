@@ -8,15 +8,15 @@ class AuthService {
     return decode(this.getToken());
   }
 
+  getToken() {
+    // Retrieves the user token from localStorage
+    return localStorage.getItem('id_token');
+  }
+
   // return `true` or `false` if token exists (does not verify if it's expired yet)
   loggedIn() {
     const token = this.getToken();
     return token ? true : false;
-  }
-
-  getToken() {
-    // Retrieves the user token from localStorage
-    return localStorage.getItem('id_token');
   }
 
   login(idToken) {
@@ -29,7 +29,7 @@ class AuthService {
     // Clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
     // this will reload the page and reset the state of the application
-    window.location.reload();
+    window.location.assign('/');
   }
 }
 
