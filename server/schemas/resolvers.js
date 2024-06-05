@@ -31,11 +31,14 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email:email }); 
+      console.log(user)
       if (!user) {
         throw AuthenticationError;
       }
-      const correctpw = await User.isCorrectPassword(password);
+      const correctpw = await user.isCorrectPassword(password);
+      console.log(correctpw)
+      console.log(' can you here me')
       if (!correctpw) {
         throw AuthenticationError;
       }
