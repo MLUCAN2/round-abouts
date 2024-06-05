@@ -3,6 +3,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center ;
+  color: aqua;
+  background-color: black;
 
 }
 header h1{
@@ -12,10 +14,12 @@ header h1{
 nav ul{
   display: flex;
   list-style: none;
+  color: aqua;
+  border: 10px;
 }
 
 nav button{
-  background: none;
+  background: aquamarine;
 }
 
 /* footer section */
@@ -29,3 +33,4 @@ footer ul{
   justify-content: space-between;
   list-style: none;
 }
+
