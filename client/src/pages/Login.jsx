@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../Utils/mutations';
 
@@ -9,6 +8,7 @@ import Auth from '../Utils/auth';
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const navigate= useNavigate();
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -28,10 +28,12 @@ const Login = (props) => {
       const { data } = await login({
         variables: { ...formState },
       });
+      console.log("Logged in, received data:", data);
 
       Auth.login(data.login.token);
+      navigate('/');
     } catch (e) {
-      console.error(e);
+      console.error('Error logging in:', e);
     }
 
     // clear form values
@@ -64,7 +66,7 @@ const Login = (props) => {
                 />
                 <input
                   className="form-input"
-                  placeholder="******"
+                  placeholder="Password"
                   name="password"
                   type="password"
                   value={formState.password}
