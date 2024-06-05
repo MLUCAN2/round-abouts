@@ -4,11 +4,11 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import Auth from '../../Utils/auth';
 
-export default CreateTripForm = () => {
+const CreateTripForm = () => {
     const [tripNameText, setTripNameText] = useState('');
     const [destinationText, setDestinationText] = useState('');
     const [startDateText, setStartDateText] = useState('');
-    const [endDateText, setEndDateText] = useState(''); 
+    const [endDateText, setEndDateText] = useState('');
     const [descriptionText, setDescriptionText] = useState('');
 
 
@@ -41,11 +41,11 @@ export default CreateTripForm = () => {
         }
     };
 
-   
+
     const handleChange = (event) => {
         const { name, value } = event.target;
-        
-        switch(name) {
+
+        switch (name) {
             case 'tripNameText':
                 setTripNameText(value);
                 break;
@@ -61,31 +61,79 @@ export default CreateTripForm = () => {
             case 'descriptionText':
                 setDescriptionText(value);
                 break;
-            
+
         }
     }
 
     return (
         <div>
-            <h2>Create A Trip Here!</h2>
+            
 
             {Auth.loggedIn() ? (
                 <>
-                <form
-                    className= "form"
-                    onSubmit={handleFormSubmit}
-                ></form>
+                    <h3>Lets start your trip by filling out this form</h3>
+                    <form className="form" onSubmit={handleFormSubmit}>
+                        <input
+                            name='tripNameText"'
+                            type='text'
+                            value={tripNameText}
+                            placeholder='Name Your Trip!'
+                            onChange={handleChange}
+                        />
+
+                        <input
+                            name='destinationText'
+                            type='text'
+                            value={destinationText}
+                            placeholder='Where will you be traveling to?'
+                            onChange={handleChange}
+                        />
+                        <input
+                            name='startDateText'
+                            type='text'
+                            value={startDateText}
+                            placeholder='When will your trip start?'
+                            onChange={handleChange}
+                        />
+                        <input
+                            name='endDateText'
+                            type='text'
+                            value={endDateText}
+                            placeholder='When will your trip end?'
+                            onChange={handleChange}
+                        />
+                        <input
+                            name="descriptionText"
+                            type='text'
+                            value={descriptionText}
+                            placeholder='Describe your trip here (optional)'
+                            onChange={handleChange}
+                        />
+                        <button
+                            className="btn btn-block btn-primary"
+                            
+                            type="submit"
+                            onSubmit={handleFormSubmit}
+                        >
+                            Submit
+                        </button>
+
+
+
+                    </form>
 
                 </>
             )
-            :
-            <p>
-                You need to Log In first so we can help you plan your trip!
-                <Link to='/login'>LOG IN</Link> or if you dont have an account <Link to='/register'>SIGN UP</Link>
-            </p>
+                :
+                <p>
+                    Log In first so we can help you plan your trip!
+                    <Link to='/login'> LOG IN </Link> or if you dont have an account <Link to='/register'> SIGN UP </Link>
+                </p>
             }
         </div>
     )
-    
+
 
 };
+
+export default CreateTripForm;
