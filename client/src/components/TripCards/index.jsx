@@ -1,4 +1,13 @@
-const TripCards = ({ trips = [] }) => {
+import { useQuery } from '@apollo/client';
+
+
+const TripCards = () => {
+    const trips = trips || [];
+
+    
+    
+    
+    
     return (
 
         <div>
