@@ -36,6 +36,7 @@ const typeDefs = `
     trips: [Trip]
     trip(tripId: ID!): Trip
     activities: [Activity]
+    activitiesByUser(userId: ID!): [Activity]
   }
 
   type Mutation {
