@@ -21,7 +21,12 @@ const resolvers = {
 
     activities: async () => {
       return  await Activity.find({})
-    }
+    },
+
+    activitiesByUser: async (parent, { userId }) => {
+      return Activity.find({ userId });
+    },
+    
   },
 
   Mutation: {
