@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 // import Map from ('../components/Map')
 import {  REMOVE_ACTIVITY, QUERY_ACTIVITIES_BY_USER } from '../Utils/mutations';
+import AuthService from '../Utils/auth'
 
 const Activities = () => {
     // Get activity based on the logged in user
@@ -19,6 +20,8 @@ const Activities = () => {
         console.error('Error deleting activity:', error);
       }
     };
+    if (loading) return <p>Loading activities...</p>;
+    if (error) return <p>Error fetching or activity does not exist: {error.message}</p>;
   
     return (
         <div>
