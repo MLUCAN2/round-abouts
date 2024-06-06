@@ -2,41 +2,33 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../Utils/mutations';
-
-import Auth from '../Utils/auth';
+import AuthService from '../Utils/auth';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
-  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
-  // submit form
+  // Handles the submit of the form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-      console.log("Logged in, received data:", data);
-
-      Auth.login(data.login.token);
+      AuthService.login(data.login.token);
       navigate('/');
     } catch (e) {
       console.error('Error logging in:', e);
     }
-
-    // clear form values
     setFormState({
       email: '',
       password: '',
@@ -51,8 +43,7 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                Success! You may now head <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
@@ -81,7 +72,6 @@ const Login = (props) => {
                 </button>
               </form>
             )}
-
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
@@ -95,4 +85,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
