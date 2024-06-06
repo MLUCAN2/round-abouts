@@ -37,3 +37,33 @@ mutation addTrip($tripName: String!, $startDate: String, $destination: String!, 
     description
   }
 }`
+
+export const QUERY_ACTIVITIES = gql`
+  query GetActivities {
+    activities {
+      _id
+      activityName
+      date
+      description
+      destination
+    }
+  }
+`
+export const REMOVE_ACTIVITY = gql`
+  mutation RemoveActivity($activityId: ID!) {
+    removeActivity(activityId: $activityId) {
+      _id
+    }
+  }
+`
+export const QUERY_ACTIVITIES_BY_USER = gql`
+  query GetActivitiesByUser($userId: ID!) {
+    activitiesByUser(userId: $userId) {
+      _id
+      activityName
+      date
+      description
+      destination
+    }
+  }
+`
