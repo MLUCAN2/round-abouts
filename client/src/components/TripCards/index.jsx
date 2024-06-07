@@ -1,4 +1,4 @@
-
+import React from 'react';
 
 const TripCards = ({ trips }) => {
 
@@ -31,3 +31,4 @@ const TripCards = ({ trips }) => {
 };
 
 export default TripCards;
+

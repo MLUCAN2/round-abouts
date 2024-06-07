@@ -53,9 +53,16 @@ const resolvers = {
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
     },
-    addTrip: async (parent, { tripName, startDate, endDate, description }) => {
-      return Trip.create({ tripName, startDate, endDate, description });
+    addTrip: async (parent, { tripName, startDate, endDate, description, destination }) => {
+      try {
+        const trip = await Trip.create({ tripName, startDate, endDate, description, destination });
+        return trip;
+      } catch (error) {
+        console.error('Error creating trip:', error);
+        throw new Error('Failed to create trip');
+      }
     },
+    
     removeTrip: async (parent, { tripId }) => {
       return Trip.findOneAndDelete({ _id: tripId });
     },
