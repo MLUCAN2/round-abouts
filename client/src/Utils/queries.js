@@ -9,6 +9,7 @@ query User($userId: ID!) {
         endDate
         tripName
         description
+        destination
         activities {
           activityName
           date
