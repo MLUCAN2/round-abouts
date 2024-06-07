@@ -36,17 +36,21 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email:email }); 
-      console.log(user)
+      const user = await User.findOne({ email });
+
       if (!user) {
         throw AuthenticationError;
       }
-      const correctpw = await user.isCorrectPassword({ password });
-      if (!correctpw) {
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
         throw AuthenticationError;
       }
+
       const token = signToken(user);
-      return { token, user }
+
+      return { token, user };
     },
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
