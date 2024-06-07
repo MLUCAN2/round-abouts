@@ -13,11 +13,7 @@ const CreateTripForm = () => {
 
 
     const [addTrip, { error }] = useMutation
-        (ADD_TRIP, {
-            refetchQueries: [
-
-            ]
-        });
+        (ADD_TRIP);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -32,9 +28,13 @@ const CreateTripForm = () => {
                     descriptionText
                 },
 
-            })
+            });
 
-            setTripNameText('')
+            setTripNameText('');
+            setDescriptionText('');
+            setDestinationText('');
+            setStartDateText('');
+            setEndDateText('');
 
         } catch (err) {
             console.error(err);
@@ -74,7 +74,7 @@ const CreateTripForm = () => {
                     <h3>Lets start your trip by filling out this form</h3>
                     <form className="form" onSubmit={handleFormSubmit}>
                         <input
-                            name='tripNameText"'
+                            name='tripNameText'
                             type='text'
                             value={tripNameText}
                             placeholder='Name Your Trip!'
