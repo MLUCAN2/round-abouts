@@ -16,7 +16,7 @@ const Trips = () => {
     return (
     <div className='cards'>
 
-        <TripCards/>
+        <TripCards trips={trips} />
         
     </div>
     )
