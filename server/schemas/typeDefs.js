@@ -13,6 +13,7 @@ const typeDefs = `
     tripName: String
     startDate: String
     endDate: String
+    destination: String
     description: String
     activities: [Activity]
   }
@@ -43,7 +44,7 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
-    addTrip(tripName: String!, startDate: String!, endDate: String!, Description: String!): Trip
+    addTrip(tripName: String!, startDate: String!, endDate: String!, description: String!, destination: String!): Trip
     removeTrip(tripId: ID!): Trip
     addActivity(activityName: String!, date: String!, description: String!, destination: String!): Activity
     removeActivity(activityId: ID!): Activity

@@ -2,138 +2,126 @@ import { useState } from 'react';
 import { ADD_TRIP } from '../../Utils/mutations';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import Auth from '../../Utils/auth';
+import AuthService from '../../Utils/auth';
 
-const CreateTripForm = () => {
-    const [tripNameText, setTripNameText] = useState('');
-    const [destinationText, setDestinationText] = useState('');
-    const [startDateText, setStartDateText] = useState('');
-    const [endDateText, setEndDateText] = useState('');
-    const [descriptionText, setDescriptionText] = useState('');
+const CreateTripForm = ({ refetchTrips }) => {
+  const [tripName, setTripName] = useState('');
+  const [destination, setDestination] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [description, setDescription] = useState('');
 
+  const [addTrip, { error }] = useMutation(ADD_TRIP);
 
-    const [addTrip, { error }] = useMutation
-        (ADD_TRIP);
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+    try {
+      const { data } = await addTrip({
+        variables: {
+          tripName,
+          destination,
+          startDate,
+          endDate,
+          description: description || "N/A",  
+        },
+      });
 
-        try {
-            const { data } = await addTrip({
-                variables: {
-                    tripNameText,
-                    destinationText,
-                    startDateText,
-                    endDateText,
-                    descriptionText
-                },
+      console.log('Trip created:', data);
 
-            });
+      setTripName('');
+      setDestination('');
+      setStartDate('');
+      setEndDate('');
+      setDescription('');
+      refetchTrips(); 
 
-            setTripNameText('');
-            setDescriptionText('');
-            setDestinationText('');
-            setStartDateText('');
-            setEndDateText('');
-
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        switch (name) {
-            case 'tripNameText':
-                setTripNameText(value);
-                break;
-            case 'destinationText':
-                setDestinationText(value);
-                break;
-            case 'startDateText':
-                setStartDateText(value);
-                break;
-            case 'endDateText':
-                setEndDateText(value);
-                break;
-            case 'descriptionText':
-                setDescriptionText(value);
-                break;
-
-        }
+    } catch (err) {
+      console.error('Error creating trip:', err);
+      console.log('Error details:', err.networkError?.result?.errors || err);
     }
+  };
 
-    return (
-        <div>
-            
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-            {Auth.loggedIn() ? (
-                <>
-                    <h3>Lets start your trip by filling out this form</h3>
-                    <form className="form" onSubmit={handleFormSubmit}>
-                        <input
-                            name='tripNameText'
-                            type='text'
-                            value={tripNameText}
-                            placeholder='Name Your Trip!'
-                            onChange={handleChange}
-                        />
+    switch (name) {
+      case 'tripName':
+        setTripName(value);
+        break;
+      case 'destination':
+        setDestination(value);
+        break;
+      case 'startDate':
+        setStartDate(value);
+        break;
+      case 'endDate':
+        setEndDate(value);
+        break;
+      case 'description':
+        setDescription(value);
+        break;
+      default:
+        break;
+    }
+  };
 
-                        <input
-                            name='destinationText'
-                            type='text'
-                            value={destinationText}
-                            placeholder='Where will you be traveling to?'
-                            onChange={handleChange}
-                        />
-                        <input
-                            name='startDateText'
-                            type='text'
-                            value={startDateText}
-                            placeholder='When will your trip start?'
-                            onChange={handleChange}
-                        />
-                        <input
-                            name='endDateText'
-                            type='text'
-                            value={endDateText}
-                            placeholder='When will your trip end?'
-                            onChange={handleChange}
-                        />
-                        <input
-                            name="descriptionText"
-                            type='text'
-                            value={descriptionText}
-                            placeholder='Describe your trip here (optional)'
-                            onChange={handleChange}
-                        />
-                        <button
-                            className="btn btn-block btn-primary"
-                            
-                            type="submit"
-                            onSubmit={handleFormSubmit}
-                        >
-                            Submit
-                        </button>
-
-
-
-                    </form>
-
-                </>
-            )
-                :
-                <p>
-                    Log In first so we can help you plan your trip!
-                    <Link to='/login'> LOG IN </Link> or if you dont have an account <Link to='/register'> SIGN UP </Link>
-                </p>
-            }
-        </div>
-    )
-
-
+  return (
+    <div>
+      {AuthService.loggedIn() ? (
+        <>
+          <h3>Let's start your trip by filling out this form</h3>
+          <form className="form" onSubmit={handleFormSubmit}>
+            <input
+              name="tripName"
+              type="text"
+              value={tripName}
+              placeholder="Name Your Trip!"
+              onChange={handleChange}
+            />
+            <input
+              name="destination"
+              type="text"
+              value={destination}
+              placeholder="Where will you be traveling to?"
+              onChange={handleChange}
+            />
+            <input
+              name="startDate"
+              type="date"
+              value={startDate}
+              onChange={handleChange}
+            />
+            <input
+              name="endDate"
+              type="date"
+              value={endDate}
+              onChange={handleChange}
+            />
+            <input
+              name="description"
+              type="text"
+              value={description}
+              placeholder="Describe your trip here (optional)"
+              onChange={handleChange}
+            />
+            <button
+              className="btn btn-block btn-primary"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+          {error && <p>Error creating trip: {error.message}</p>}
+        </>
+      ) : (
+        <p>
+          Log In first so we can help you plan your trip!
+          <Link to="/login"> LOG IN </Link> or if you don't have an account <Link to="/register"> SIGN UP </Link>
+        </p>
+      )}
+    </div>
+  );
 };
 
 export default CreateTripForm;
