@@ -10,6 +10,10 @@ const tripSchema= new Schema({
         type: String,
         required: true,
     },
+    destination:{
+        type: String,
+        required: true
+    },
     startDate:{
         type: String,
         required: true,

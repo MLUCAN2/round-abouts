@@ -15,7 +15,6 @@ const TripCards = ({ trips }) => {
                         <ul>{trip.startDate} - {trip.endDate}</ul>
                         <ul>{trip.description}</ul>
                         <ul>{trip.activities}</ul>
-
                     </div>
                 ))}
             </div>
