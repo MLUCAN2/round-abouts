@@ -5,7 +5,6 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Activities from './pages/Activities.jsx';
-import CreateTrip from './pages/CreateTrip.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Trips from './pages/Trips.jsx';
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
       {
         path: '/activities',
         element: <Activities/>
-      },
-      {
-        path: '/createTrip',
-        element: <CreateTrip/>
       },
       {
       path: '/login',

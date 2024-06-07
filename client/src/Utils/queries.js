@@ -6,9 +6,11 @@ query User($userId: ID!) {
     user(userId: $userId) {
       trips {
         startDate
+        destination
         endDate
         tripName
         description
+        destination
         activities {
           activityName
           date

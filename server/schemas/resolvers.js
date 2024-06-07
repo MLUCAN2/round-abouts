@@ -41,9 +41,7 @@ const resolvers = {
       if (!user) {
         throw AuthenticationError;
       }
-      const correctpw = await user.isCorrectPassword(password);
-      console.log(correctpw)
-      console.log(' can you here me')
+      const correctpw = await user.isCorrectPassword({ password });
       if (!correctpw) {
         throw AuthenticationError;
       }
@@ -55,6 +53,7 @@ const resolvers = {
     },
     addTrip: async (parent, { tripName, startDate, endDate, description, destination }, context) => {
       try {
+        console.log(destination)
         const trip = await Trip.create({ tripName, startDate, endDate, description, destination });
        
         await User.findOneAndUpdate(

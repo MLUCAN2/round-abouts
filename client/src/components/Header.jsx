@@ -22,14 +22,16 @@ const Header = () => {
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           {isAuthenticated ? (
+            <>
             <li><Link onClick={handleLogout}>Logout</Link></li>
+            <li><Link to="/trips">Trips</Link></li>
+            </>
           ) : (
             <>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
             </>
-          )}
-          <li><Link to="/trips">Trips</Link></li>
+              )}
         </ul>
       </nav>
     </header>
