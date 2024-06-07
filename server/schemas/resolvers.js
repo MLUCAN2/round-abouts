@@ -41,11 +41,7 @@ const resolvers = {
       if (!user) {
         throw AuthenticationError;
       }
-<<<<<<< HEAD
       const correctpw = await user.isCorrectPassword({ password });
-=======
-      const correctpw = await User.isCorrectPassword({ password });
->>>>>>> cc5ee266c606da7e883007abeab528eaecd81dd3
       if (!correctpw) {
         throw AuthenticationError;
       }
