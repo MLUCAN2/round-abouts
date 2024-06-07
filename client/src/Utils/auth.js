@@ -4,8 +4,18 @@ import decode from 'jwt-decode';
 // create a new class to instantiate for a user
 class AuthService {
   // get user data from JSON web token by decoding it
-  getUser() {
-    return decode(this.getToken());
+ getUser() {
+    try {
+      const token = this.getToken();
+      if (token) {
+        return decode(token);
+      }
+      return null;
+    } catch (error) {
+      console.error("Invalid token:", error);
+      this.logout();
+      return null;
+    }
   }
 
   // return `true` or `false` if token exists (does not verify if it's expired yet)
