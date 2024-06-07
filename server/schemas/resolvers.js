@@ -41,9 +41,13 @@ const resolvers = {
       if (!user) {
         throw AuthenticationError;
       }
+<<<<<<< HEAD
+      const correctpw = await User.isCorrectPassword({ password });
+=======
       const correctpw = await user.isCorrectPassword(password);
       console.log(correctpw)
       console.log(' can you here me')
+>>>>>>> dfe501121f1c2e9b6d1aaa19766262fc559f72d5
       if (!correctpw) {
         throw AuthenticationError;
       }
