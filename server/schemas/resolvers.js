@@ -53,9 +53,15 @@ const resolvers = {
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
     },
-    addTrip: async (parent, { tripName, startDate, endDate, description, destination }) => {
+    addTrip: async (parent, { tripName, startDate, endDate, description, destination }, context) => {
       try {
         const trip = await Trip.create({ tripName, startDate, endDate, description, destination });
+       
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { trips: trip._id } }
+        );
+
         return trip;
       } catch (error) {
         console.error('Error creating trip:', error);
