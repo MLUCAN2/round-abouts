@@ -1,6 +1,8 @@
-/* Background animation */
 @import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+/* Background animation */
+/* Retrieved background code from: https://codepen.io/adamabundis/pen/PoYgvYQ */
 
 .wrapper {
   position: absolute;
@@ -142,8 +144,8 @@ footer ul {
   margin: 0;
   display: flex;
   flex-direction: row;
-  align-items: center; /* Center align the list items */
-  gap: 10px; /* Add some spacing between the list items */
+  align-items: center;
+  gap: 10px; 
 }
 
 footer li {
