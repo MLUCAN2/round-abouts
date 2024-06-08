@@ -34,10 +34,10 @@ const Register = (props) => {
     };
 
     return (
-        <main className='registration'>
-            <h2>Register</h2>
+        <main className='input-card'>
+            <h2 className='input-form-header'>Register</h2>
             <section>
-                <form className='register-form' onSubmit={handleFormSubmit}>
+                <form className="input-form" onSubmit={handleFormSubmit}>
                     <input
                         type='text'
                         name='firstName'
@@ -74,9 +74,7 @@ const Register = (props) => {
                         value={formState.password}
                         onChange={handleChange}
                     />
-                    <button className='submit-button' style={{ cursor: 'pointer' }} type='submit'>
-                        Submit
-                    </button>
+                    <button style={{ cursor: 'pointer' }} type='submit'>Submit</button>
                 </form>
                 {error && <div className="error-message">Registration failed: {error.message}</div>}
                 {data && <div className="success-message">Registration successful!</div>}
