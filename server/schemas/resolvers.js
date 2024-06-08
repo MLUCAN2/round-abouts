@@ -73,8 +73,13 @@ const resolvers = {
     },
     
     removeTrip: async (parent, { tripId }) => {
-      return Trip.findOneAndDelete({ _id: tripId });
+      const trip = await Trip.findByIdAndDelete(tripId);
+      if (!trip) {
+        throw new Error('Trip not found');
+      }
+      return trip;
     },
+
     addActivity: async (parent, { activityName, date, description, destination }) => {
       return Activity.create({ activityName, date, description, destination });
     },

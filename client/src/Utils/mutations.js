@@ -88,3 +88,11 @@ export const QUERY_ACTIVITIES_BY_USER = gql`
     }
   }
 `;
+
+export const REMOVE_TRIP= gql`
+  mutation RemoveTrip($tripId: ID!) {
+    removeTrip(tripId: $tripId) {
+      _id
+    }
+  }
+`;
