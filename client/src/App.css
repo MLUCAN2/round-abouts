@@ -93,6 +93,40 @@ nav {
   font-weight: bold;
 }
 
+/* Login Section */
+.input-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #9c1d1da2;
+  padding: 15px;
+  border: solid 2px black;
+  border-radius: 5%;
+}
+.input-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-form input{
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+.input-form button{
+  font-family: "Open Sans", sans-serif;
+  background-color: white;
+}
+
+.input-form-header{
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+
 /* Registration Section */
 .registration{
   display: flex;
