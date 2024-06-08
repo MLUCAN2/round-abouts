@@ -111,10 +111,12 @@ const TripCards = ({ trips }) => {
                         trips.map((trip) => (
                             // Section for the trip card
                             <div key={trip._id} className="card">
-                                <h3>{trip.tripName}</h3>
-                                <ul>{trip.startDate} - {trip.endDate}</ul>
+                                <div className='tripCard'>
+                                <h3 className='title'>{trip.tripName}</h3>
+                                <ul>{trip.startDate} / {trip.endDate}</ul>
                                 <ul>{trip.description}</ul>
                                 <ul>{trip.activities}</ul>
+                                </div>
                                 <button onClick={displayForm} className="btn btn-block btn-primary" type="submit"> {btnText}</button>
 
                                 {/* Section for the activity form */}

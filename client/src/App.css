@@ -196,3 +196,96 @@ footer a {
 footer a:hover {
   color: #9c1d1d;
 }
+/* trip cards */
+.title {
+  color: #262626;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: normal;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.tripCard {
+  display: block;
+  position: relative;
+  max-width: 225px;
+  max-height: 320px;
+  background-color: #f2f8f9;
+  border-radius: 10px;
+  padding: 2em 1.2em;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
+  opacity: 85%;
+}
+
+.form {
+  background-color: #f2f8f9;
+  background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
+  opacity: 85%;
+  border-radius: 10px;
+  padding: 2px;;
+  margin: 12px; 
+  min-height: 50px;
+}
+.inputFields {
+ background-color: #5A8100;
+}
+
+/* .submitBtn {
+  background-color:white;
+ color: black;
+ min-width: 100px;
+ min-height: 10px;
+ 
+ display: block;
+ margin: auto;
+}
+.submitBtn:hover {
+  background-color: black;
+  color: white;
+
+} */
+
+.submitBtn {
+  padding: 0.5em 1em;
+  background-color: #959595;
+  display: block;
+  margin: auto;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  transition: all 0.5s linear;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.submitBtn:hover::after, .submitBtn:hover::before {
+  content: '';
+  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  animation: move-right-side 1s ease infinite;
+}
+
+.submitBtn:hover::before {
+  background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+  inset: 0;
+  animation: move-left-side 1s ease infinite;
+  z-index: -2;
+}
+
+.submitBtn:hover {
+  background-color: #fff;
+  color:#959595;
+}
