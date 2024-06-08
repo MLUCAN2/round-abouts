@@ -72,7 +72,7 @@ const Trips = () => {
       {trips.length === 0 ? (
         <p>No trips planned yet. Start by creating a new trip!</p>
       ) : (
-        <TripCards trips={trips} onAddActivity={handleAddActivity} />
+        <TripCards trips={trips} refetchTrips={refetch} onAddActivity={handleAddActivity} />
       )}
     </div>
   );
