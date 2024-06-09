@@ -167,10 +167,6 @@ footer {
   width: 100%;
 }
 
-footer h2 {
-  margin-bottom: 10px;
-  font-family: "Open Sans", sans-serif;
-}
 
 footer ul {
   list-style: none;
@@ -185,6 +181,8 @@ footer ul {
 footer li {
   margin: 5px;
   font-family: "Open Sans", sans-serif;
+  color: white;
+  font-weight: bold;
 }
 
 footer a {
@@ -196,7 +194,42 @@ footer a {
 footer a:hover {
   color: #9c1d1d;
 }
-/* trip cards */
+/* Trip Cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  padding: 20px; 
+}
+
+.tripCard {
+  display: block;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  max-width: 225px;
+  max-height: 320px;
+  background-color: #f2f8f9;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
+  opacity: 85%;
+  border: black 2px solid;
+}
+
+.trip-submit{
+  margin-top: 10px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.card {
+  margin: 10px;
+  box-sizing: border-box;
+}
+
 .title {
   color: #262626;
   text-align: center;
@@ -205,50 +238,37 @@ footer a:hover {
   font-weight: 700;
   margin-bottom: 0.5em;
 }
-
-.tripCard {
-  display: block;
-  position: relative;
-  max-width: 225px;
-  max-height: 320px;
-  background-color: #f2f8f9;
-  border-radius: 10px;
-  padding: 2em 1.2em;
-  margin: 12px;
-  text-decoration: none;
-  z-index: 0;
-  overflow: hidden;
-  background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
-  opacity: 85%;
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
   background-color: #f2f8f9;
   background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
   opacity: 85%;
+  border: black 2px solid;
   border-radius: 10px;
-  padding: 2px;;
+  padding: 12px;
   margin: 12px; 
   min-height: 50px;
 }
+
 .inputFields {
- background-color: #5A8100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* .submitBtn {
-  background-color:white;
- color: black;
- min-width: 100px;
- min-height: 10px;
- 
- display: block;
- margin: auto;
+.inputFields input{
+  margin: 3px;
 }
-.submitBtn:hover {
-  background-color: black;
-  color: white;
-
-} */
 
 .submitBtn {
   padding: 0.5em 1em;
@@ -274,7 +294,6 @@ footer a:hover {
   position: absolute;
   inset: 0;
   z-index: -1;
-
   animation: move-right-side 1s ease infinite;
 }
 
@@ -287,12 +306,13 @@ footer a:hover {
 
 .submitBtn:hover {
   background-color: #fff;
-  color:#959595;
+  color: #959595;
 }
 
 h3 {
   text-align: center;
 }
+
 .tripsTitle {
   text-align: center;
 }
