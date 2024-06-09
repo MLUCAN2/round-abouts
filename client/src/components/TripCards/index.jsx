@@ -104,24 +104,33 @@ const TripCards = ({ trips }) => {
             }
         };
         return (
-            <div className='card-container'> 
-                {trips && trips.map((trip) => (
-                    // Section for the trip card
-                    <div key={trip._id} className="card">
-                        <h3>{trip.tripName}</h3>
-                        <ul>{trip.startDate} - {trip.endDate}</ul>
-                        <ul>{trip.description}</ul>
-                        <ul>{trip.activities}</ul>
-                        <button onClick={displayForm} className="btn btn-block btn-primary" type="submit"> {btnText}</button>
-                        
-                        {/* Section for the activity form */}
-                        <form className={formStatus} onSubmit={handleFormSubmit}>
-                            <input name='activityName' type='text' value={activityNameText} placeholder='Name Your Activity' onChange={handleChange}/>
-                            <input name='destination' type='text' value={destinationText} placeholder='Enter Destination' onChange={handleChange} />
-                            <input name='description' type='text' value={descriptionNameText} placeholder='Describe your Activity (optional)' onChange={handleChange} />
-                            <input name='date' type='date' value={dateText} onChange={handleChange}/>
-                        </form>
-                        <button onClick={() => handleDelete(trip._id)} type="button">Delete</button>
+
+            <div>
+                <div>
+                    {trips &&
+                        trips.map((trip) => (
+                            // Section for the trip card
+                            <div key={trip._id} className="card">
+                                <div className='tripCard'>
+                                <h3 className='title'>{trip.tripName}</h3>
+                                <ul>{trip.startDate} / {trip.endDate}</ul>
+                                <ul>{trip.description}</ul>
+                                <ul>{trip.activities}</ul>
+                                </div>
+                                <button onClick={displayForm} className="btn btn-block btn-primary" type="submit"> {btnText}</button>
+
+                                {/* Section for the activity form */}
+                                <form className={formStatus} onSubmit={handleFormSubmit}>
+                                    <input name='activityName' type='text' value={activityNameText} placeholder='Name Your Activity' onChange={handleChange}/>
+
+                                    <input name='destination' type='text' value={destinationText} placeholder='Enter Destination' onChange={handleChange} />
+
+                                    <input name='description' type='text' value={descriptionNameText} placeholder='Describe your Activity (optional)' onChange={handleChange} />
+
+                                    <input name='date' type='date' value={dateText} onChange={handleChange}/>
+                                </form>
+
+                                <button onClick={() => handleDelete(trip._id)} className="btn btn-block btn-danger" type="button">Delete</button>
                                
                     </div>
                 ))}

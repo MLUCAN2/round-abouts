@@ -196,32 +196,103 @@ footer a {
 footer a:hover {
   color: #9c1d1d;
 }
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Adjust the gap between the cards */
-  justify-content: center; /* Center the cards horizontally */
+/* trip cards */
+.title {
+  color: #262626;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: normal;
+  font-weight: 700;
+  margin-bottom: 0.5em;
 }
 
-.card {
-  flex: 1 1 calc(33.333% - 20px); /* Adjust the percentage to control the number of cards per row */
-  box-sizing: border-box;
-  background: white; /* Background color of the card */
-  padding: 20px; /* Padding inside the card */
-  margin: 10px; /* Margin around the card */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for the card */
+.tripCard {
+  display: block;
+  position: relative;
+  max-width: 225px;
+  max-height: 320px;
+  background-color: #f2f8f9;
+  border-radius: 10px;
+  padding: 2em 1.2em;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
+  opacity: 85%;
 }
 
-@media (max-width: 768px) {
-  .card {
-    flex: 1 1 calc(50% - 20px); /* Two cards per row on smaller screens */
-  }
+.form {
+  background-color: #f2f8f9;
+  background: linear-gradient(to bottom, grey, rgb(57, 57, 57));
+  opacity: 85%;
+  border-radius: 10px;
+  padding: 2px;;
+  margin: 12px; 
+  min-height: 50px;
+}
+.inputFields {
+ background-color: #5A8100;
 }
 
-@media (max-width: 480px) {
-  .card {
-    flex: 1 1 100%; /* One card per row on small screens */
-  }
+/* .submitBtn {
+  background-color:white;
+ color: black;
+ min-width: 100px;
+ min-height: 10px;
+ 
+ display: block;
+ margin: auto;
+}
+.submitBtn:hover {
+  background-color: black;
+  color: white;
+
+} */
+
+.submitBtn {
+  padding: 0.5em 1em;
+  background-color: #959595;
+  display: block;
+  margin: auto;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  transition: all 0.5s linear;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.submitBtn:hover::after, .submitBtn:hover::before {
+  content: '';
+  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  animation: move-right-side 1s ease infinite;
+}
+
+.submitBtn:hover::before {
+  background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+  inset: 0;
+  animation: move-left-side 1s ease infinite;
+  z-index: -2;
+}
+
+.submitBtn:hover {
+  background-color: #fff;
+  color:#959595;
+}
+
+h3 {
+  text-align: center;
+}
+.tripsTitle {
+  text-align: center;
 }

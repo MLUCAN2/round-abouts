@@ -67,7 +67,7 @@ const Trips = () => {
 
   return (
     <div>
-      <h1>Your Trips</h1>
+      <h1 className='tripsTitle'>Your Trips</h1>
       <CreateTripForm refetchTrips={refetch} />
       {trips.length === 0 ? (
         <p>No trips planned yet. Start by creating a new trip!</p>

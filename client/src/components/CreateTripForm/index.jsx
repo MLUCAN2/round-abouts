@@ -23,7 +23,7 @@ const CreateTripForm = ({ refetchTrips }) => {
           destination,
           startDate,
           endDate,
-          description: description || "N/A",  
+          description: description || "N/A",
         },
       });
 
@@ -34,7 +34,7 @@ const CreateTripForm = ({ refetchTrips }) => {
       setStartDate('');
       setEndDate('');
       setDescription('');
-      refetchTrips(); 
+      refetchTrips();
 
     } catch (err) {
       console.error('Error creating trip:', err);
@@ -69,49 +69,46 @@ const CreateTripForm = ({ refetchTrips }) => {
   return (
     <div>
       {AuthService.loggedIn() ? (
-        <section className='input-card'>
-          <h3 className='input-form-header'>Add Trip</h3>
-          <form className="input-form" onSubmit={handleFormSubmit}>
-            <input
-            className='form-input'
-              name="tripName"
-              type="text"
-              value={tripName}
-              placeholder="Name Your Trip!"
-              onChange={handleChange}
-            />
-            <input
-            className='form-input'
-              name="destination"
-              type="text"
-              value={destination}
-              placeholder="Destination"
-              onChange={handleChange}
-            />
-               <input
-            className='form-input'
-              name="description"
-              type="text"
-              value={description}
-              placeholder="Describe your trip here"
-              onChange={handleChange}
-            />
-            <input
-            className='form-input'
-              name="startDate"
-              type="date"
-              value={startDate}
-              onChange={handleChange}
-            />
-            <input
-            className='form-input'
-              name="endDate"
-              type="date"
-              value={endDate}
-              onChange={handleChange}
-            />
-         
+        <>
+          <h3>Let's start your trip by filling out this form</h3>
+          <form className="form" onSubmit={handleFormSubmit}>
+            <div className='inputFields'>
+              <input 
+                name="tripName"
+                type="text"
+                value={tripName}
+                placeholder="Name Your Trip!"
+                onChange={handleChange}
+              />
+              <input
+                name="destination"
+                type="text"
+                value={destination}
+                placeholder="Where will you be traveling to?"
+                onChange={handleChange}
+              />
+              <input
+                name="startDate"
+                type="date"
+                value={startDate}
+                onChange={handleChange}
+              />
+              <input
+                name="endDate"
+                type="date"
+                value={endDate}
+                onChange={handleChange}
+              />
+              <input
+                name="description"
+                type="text"
+                value={description}
+                placeholder="Describe your trip here (optional)"
+                onChange={handleChange}
+              />
+            </div>
             <button
+              className="btn btn-block btn-primary"
               type="submit"
             >
               Submit
