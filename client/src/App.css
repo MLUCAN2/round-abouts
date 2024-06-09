@@ -93,7 +93,7 @@ nav {
   font-weight: bold;
 }
 
-/* Login Section */
+/* Login and Registration Section */
 .input-card{
   display: flex;
   flex-direction: column;
@@ -195,4 +195,33 @@ footer a {
 
 footer a:hover {
   color: #9c1d1d;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap between the cards */
+  justify-content: center; /* Center the cards horizontally */
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 20px); /* Adjust the percentage to control the number of cards per row */
+  box-sizing: border-box;
+  background: white; /* Background color of the card */
+  padding: 20px; /* Padding inside the card */
+  margin: 10px; /* Margin around the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for the card */
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 20px); /* Two cards per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* One card per row on small screens */
+  }
 }

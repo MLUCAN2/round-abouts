@@ -69,10 +69,11 @@ const CreateTripForm = ({ refetchTrips }) => {
   return (
     <div>
       {AuthService.loggedIn() ? (
-        <>
-          <h3>Let's start your trip by filling out this form</h3>
-          <form className="form" onSubmit={handleFormSubmit}>
+        <section className='input-card'>
+          <h3 className='input-form-header'>Add Trip</h3>
+          <form className="input-form" onSubmit={handleFormSubmit}>
             <input
+            className='form-input'
               name="tripName"
               type="text"
               value={tripName}
@@ -80,40 +81,44 @@ const CreateTripForm = ({ refetchTrips }) => {
               onChange={handleChange}
             />
             <input
+            className='form-input'
               name="destination"
               type="text"
               value={destination}
-              placeholder="Where will you be traveling to?"
+              placeholder="Destination"
+              onChange={handleChange}
+            />
+               <input
+            className='form-input'
+              name="description"
+              type="text"
+              value={description}
+              placeholder="Describe your trip here"
               onChange={handleChange}
             />
             <input
+            className='form-input'
               name="startDate"
               type="date"
               value={startDate}
               onChange={handleChange}
             />
             <input
+            className='form-input'
               name="endDate"
               type="date"
               value={endDate}
               onChange={handleChange}
             />
-            <input
-              name="description"
-              type="text"
-              value={description}
-              placeholder="Describe your trip here (optional)"
-              onChange={handleChange}
-            />
+         
             <button
-              className="btn btn-block btn-primary"
               type="submit"
             >
               Submit
             </button>
           </form>
           {error && <p>Error creating trip: {error.message}</p>}
-        </>
+        </section>
       ) : (
         <p>
           Log In first so we can help you plan your trip!
