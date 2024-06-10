@@ -14,7 +14,6 @@ const server = new ApolloServer({
 });
 
 // This is where we will pull from our static files
-app.use(express.static('client'));
 
 const startApolloServer = async () => {
     await server.start();
