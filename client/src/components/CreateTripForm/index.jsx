@@ -69,9 +69,9 @@ const CreateTripForm = ({ refetchTrips }) => {
   return (
     <div>
       {AuthService.loggedIn() ? (
-        <>
-          <h3>Let's start your trip by filling out this form</h3>
+        <section className='form-container'>
           <form className="form" onSubmit={handleFormSubmit}>
+          <h3>Create Trip</h3>
             <div className='inputFields'>
               <input 
                 name="tripName"
@@ -87,6 +87,13 @@ const CreateTripForm = ({ refetchTrips }) => {
                 placeholder="Where will you be traveling to?"
                 onChange={handleChange}
               />
+               <input
+                name="description"
+                type="text"
+                value={description}
+                placeholder="Describe your trip here (optional)"
+                onChange={handleChange}
+              />
               <input
                 name="startDate"
                 type="date"
@@ -99,23 +106,12 @@ const CreateTripForm = ({ refetchTrips }) => {
                 value={endDate}
                 onChange={handleChange}
               />
-              <input
-                name="description"
-                type="text"
-                value={description}
-                placeholder="Describe your trip here (optional)"
-                onChange={handleChange}
-              />
+             
             </div>
-            <button
-              className="submitBtn"
-              type="submit"
-            >
-              Submit
-            </button>
+            <button className='trip-submit' type="submit">Submit</button>
           </form>
           {error && <p>Error creating trip: {error.message}</p>}
-        </>
+        </section>
       ) : (
         <p>
           Log In first so we can help you plan your trip!
