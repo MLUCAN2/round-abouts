@@ -38,12 +38,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
+      <div className="main">
+        {/* For the background animation */}
         <Header />
+        <article className='wrapper'>
         <div className="container">
           <Outlet />
         </div>
+        </article>
         <Footer />
+        
       </div>
     </ApolloProvider>
   );

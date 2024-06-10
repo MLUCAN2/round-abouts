@@ -36,17 +36,21 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email:email }); 
-      console.log(user)
+      const user = await User.findOne({ email });
+
       if (!user) {
         throw AuthenticationError;
       }
-      const correctpw = await user.isCorrectPassword({ password });
-      if (!correctpw) {
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
         throw AuthenticationError;
       }
+
       const token = signToken(user);
-      return { token, user }
+
+      return { token, user };
     },
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
@@ -69,8 +73,13 @@ const resolvers = {
     },
     
     removeTrip: async (parent, { tripId }) => {
-      return Trip.findOneAndDelete({ _id: tripId });
+      const trip = await Trip.findByIdAndDelete(tripId);
+      if (!trip) {
+        throw new Error('Trip not found');
+      }
+      return trip;
     },
+
     addActivity: async (parent, { activityName, date, description, destination }) => {
       return Activity.create({ activityName, date, description, destination });
     },

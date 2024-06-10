@@ -23,7 +23,7 @@ const CreateTripForm = ({ refetchTrips }) => {
           destination,
           startDate,
           endDate,
-          description: description || "N/A",  
+          description: description || "N/A",
         },
       });
 
@@ -34,7 +34,7 @@ const CreateTripForm = ({ refetchTrips }) => {
       setStartDate('');
       setEndDate('');
       setDescription('');
-      refetchTrips(); 
+      refetchTrips();
 
     } catch (err) {
       console.error('Error creating trip:', err);
@@ -69,51 +69,49 @@ const CreateTripForm = ({ refetchTrips }) => {
   return (
     <div>
       {AuthService.loggedIn() ? (
-        <>
-          <h3>Let's start your trip by filling out this form</h3>
+        <section className='form-container'>
           <form className="form" onSubmit={handleFormSubmit}>
-            <input
-              name="tripName"
-              type="text"
-              value={tripName}
-              placeholder="Name Your Trip!"
-              onChange={handleChange}
-            />
-            <input
-              name="destination"
-              type="text"
-              value={destination}
-              placeholder="Where will you be traveling to?"
-              onChange={handleChange}
-            />
-            <input
-              name="startDate"
-              type="date"
-              value={startDate}
-              onChange={handleChange}
-            />
-            <input
-              name="endDate"
-              type="date"
-              value={endDate}
-              onChange={handleChange}
-            />
-            <input
-              name="description"
-              type="text"
-              value={description}
-              placeholder="Describe your trip here (optional)"
-              onChange={handleChange}
-            />
-            <button
-              className="btn btn-block btn-primary"
-              type="submit"
-            >
-              Submit
-            </button>
+          <h3>Create Trip</h3>
+            <div className='inputFields'>
+              <input 
+                name="tripName"
+                type="text"
+                value={tripName}
+                placeholder="Name Your Trip!"
+                onChange={handleChange}
+              />
+              <input
+                name="destination"
+                type="text"
+                value={destination}
+                placeholder="Where will you be traveling to?"
+                onChange={handleChange}
+              />
+               <input
+                name="description"
+                type="text"
+                value={description}
+                placeholder="Describe your trip here (optional)"
+                onChange={handleChange}
+              />
+              <input
+                name="startDate"
+                type="date"
+                value={startDate}
+                onChange={handleChange}
+              />
+              <input
+                name="endDate"
+                type="date"
+                value={endDate}
+                onChange={handleChange}
+              />
+             
+            </div>
+            <button className='trip-submit' type="submit">Submit</button>
           </form>
           {error && <p>Error creating trip: {error.message}</p>}
-        </>
+        </section>
       ) : (
         <p>
           Log In first so we can help you plan your trip!
